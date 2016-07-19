@@ -12,7 +12,9 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app        = express();
 
-
+app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // client asking for art data
 app.get('/art', function(req,res) {
