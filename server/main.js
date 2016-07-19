@@ -9,7 +9,16 @@ var db         = require(path.join(__dirname, './db.js'));
 
 var app        = express();
 
+
+
+// Add all middlware here
 app.use(bodyParser.json());
+// Make sure to add all middleware for passsport AFTER the
+// express middleware as shown in the configure section of
+// the passport documentation: http://passportjs.org/docs/authenticate
+
+
+
 
 // client asking for art data
 app.get('/art', function(req,res) {
