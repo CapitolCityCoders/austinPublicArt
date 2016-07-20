@@ -2,9 +2,9 @@ import React from 'react'
 import GoogleApiComponent from 'google-map-react'
 
 export class LocationsContainer extends React.Component {
-	constructor() {
-		super()
-	}
+	// constructor() {
+	// 	super()
+	// }
   render() {
   	const style = {
   		width: '100vw',
@@ -55,6 +55,6 @@ export class Map extends React.Component {
 	}
 }
 
-export GoogleApiComponent({
+export default GoogleApiComponent({
   apiKey: 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'
 })(Container)
