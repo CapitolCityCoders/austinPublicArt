@@ -80,15 +80,22 @@ class Info extends React.Component {
       userFavs: [],
       userId: null,
       address: '',
+      mapStatus: 'show'
     }
   }
   componentWillMount() {
     if(document.cookie) {
       this.findFavs()
       this.getUserId()
-      this.state.address = this.props.currentArt['Art Location Street Address'].replace(/ /g, '+').replace(/;/g, '+')
     }
-
+    var deets = this.props.currentArt['Art Location Street Address'].replace(/ /g, '+').replace(/;/g, '+')
+    if (deets){
+      console.log(true, deets)
+      this.state.address = deets
+    }else{
+      console.log(false, deets)
+      this.state.mapStatus = 'none'
+    }
   }
   findFavs() {
     auth.fetchFavs()
@@ -146,7 +153,6 @@ class Info extends React.Component {
                 }>{this.state.userFavs.includes(this.props.currentArt._id) ? "Unfav!" : "Fav!"}
                 </button>
             <div className="mapContainer">
-
               <iframe
                 width="600"
                 height="450"
