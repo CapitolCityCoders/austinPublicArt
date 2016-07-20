@@ -6,7 +6,7 @@ import Home from './components/HomePage'
 import Gallery from './components/ArtGallery'
 import ArtistPage from './components/ArtistPage'
 import FavsPage from './components/FavsPage'
-import Locations from './components/Locations'
+import {LocationsContainer, GoogleApiComponent} from './components/Locations'
 
 
 
@@ -16,7 +16,7 @@ import Locations from './components/Locations'
 render((
   <Router history={browserHistory}>
     <Route path="/" component={Home} />
-    	<Route path="locations" component={Locations} />
+    	<Route path="locations" component={LocationsContainer} />
     	<Route path="artists" component={Artists} /> 
 	    <Route path="gallery" component={Gallery} />     
       <Route path="favorites" component={FavsPage} />
