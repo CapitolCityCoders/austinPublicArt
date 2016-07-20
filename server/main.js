@@ -7,9 +7,14 @@ var history    = require('connect-history-api-fallback');
 var Utils      = require(path.join(__dirname, './utils.js'));
 var db         = require(path.join(__dirname, './db.js'));
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 var app        = express();
 
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/app-bundle.js',
 browserify(path.join(__dirname, '../client/main.js'), {
@@ -49,6 +54,8 @@ app.post('/signUp', function(req, res) {
    res.send(JSON.stringify(obj.sessionId));
  })
 })
+
+
 
 // Logs in current user as long as username is in users collection and provided a valid password
 app.post('/login', function(req, res) {
