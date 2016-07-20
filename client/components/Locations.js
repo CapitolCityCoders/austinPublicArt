@@ -1,3 +1,5 @@
+// **********Issue3 - React Map - Fullstack React**********
+
 import React from 'react'
 import GoogleApiComponent from 'google-map-react'
 
@@ -59,5 +61,5 @@ export class Map extends React.Component {
 }
 
 export default new GoogleApiComponent({
-  apiKey: 'AIzaSyC6rf0MDdC4J0zkTH0fkm2lnBMMmLFElbY'
+  bootStrapURLKeys: 'AIzaSyC6rf0MDdC4J0zkTH0fkm2lnBMMmLFElbY'
 })
