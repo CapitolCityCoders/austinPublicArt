@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 
 export function signUp(userData) {
+  console.log(userData)
   let obj = {
     method: "POST",
     headers: {
@@ -11,13 +12,19 @@ export function signUp(userData) {
   }
   return fetch(`api/auth/signUp`, obj)
     .then(function(data){
-      if(data.status < 400) {
-        return data.json().then((data) => {
-          document.cookie = "sessionId=" + data + ";path=/"
-          return "Success"
-        })
-      } else return data
+      console.log(data)
+      if (data.status<400){
+        window.location.assign('/')
+      }
+      return data
     })
+    // .then(function(data){
+    //   console.log(data)
+    //   if(data.status < 400) {
+    //     window.location('/')
+    //     })
+    //   } else return data
+    // })
 }
 
 

@@ -31,8 +31,10 @@ export default class SignUpModal extends React.Component {
         <ModalDialog onClose={this.props.onClose} className="example-dialog">
           <form name="signUpForm" onSubmit={(e) => {
             e.preventDefault();
+            console.log(this.state.username, this.state.password)
             auth.signUp({username: this.state.username, password: this.state.password})
             .then((x) => {
+              console.log(x,'line 36')
               if(x === 'Success') {
                 this.setState({showError: false})
                 this.props.onClose(true)

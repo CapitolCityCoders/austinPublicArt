@@ -1,4 +1,3 @@
-let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 
 var express = require('express');
@@ -13,14 +12,14 @@ module.exports = function (passport) {
 //---------------Serialize-----------------//
 //-----------------------------------------//
   passport.serializeUser(function(user, done){
-    done(null, user.id);
-  });
+    done(null, user._id);
+  })
 
   passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
       done(err, user)
     });
-  });
+  })
 
 // Remember:
  // If enabled, be sure to use express.session() before passport.session()
@@ -28,24 +27,32 @@ module.exports = function (passport) {
 
   //---------------Strategies----------------//
   //-----------------------------------------//
-  passport.user('local-signup', new LocalStrategy(
+  passport.use('local',new LocalStrategy(
     function(username, password, done) {
+    console.log('USERNAME IN PASSPORT ' , username);
+
       Auth.getUser({username: username})
         .then(user => {
+          console.log('user ' , user);
           if (user[0]) {
-            return done(null, false, req.flash('signupMessage', 'That username is taken!'))
+            return done(new Error('username is taken'), false, req.flash('signupMessage', 'That username is taken!'))
           } else {
             return Auth.signUp(username, password)
             .then(user => {
               return Auth.createSession(user._id)
             })
+            .then(result=>{
+              //result = {id:user_id}
+            console.log('result ' , result);
+            return result
+            })
             .then(function(obj) {
-              return done(null, {userID:obj})
+              console.log('OBJECT IN PASSPORT: ' , obj);
+              return done(null, obj)
             })
           }
         })
-    }
-  )
+    }))
 };
             // continue to handle sessions like austinArt initially did,
             // like below, but consider using express-session instead

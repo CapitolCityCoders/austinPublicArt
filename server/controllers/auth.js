@@ -1,20 +1,36 @@
 var express = require('express');
 var Auth = require('../models/auth');
 var utils = require('../utils');
-var passport = require('./passport.js')
+var passportFile = require('./passport');
+
+let passport = require('passport');
 
 var router = express.Router();
+
+router.use(passport.initialize());
+
+//require('./passport')(passport);
+
 
 module.exports = router;
 
 
 router.post('/signUp',
+  passport.authenticate('local',
+    {successRedirect: '/',
+     failureRedirect: '/',
+     failureFlash: false
+    })
+);
+  // function(req, res){
+  // console.log('req.user ' , req.user);
+  // console.log('req.sessionId', req.sessionId)
 
-  passport.authenticate('local'),
+  // { successRedirect: '/',
+  //   failureRedirect: '/login',
+  //   failureFlash: true }
 
-  { successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true }
+   // res.send(JSON.stringify(obj.sessionId));
 
   // function(req, res) {
     // const username = req.body.username;
@@ -33,16 +49,13 @@ router.post('/signUp',
   //   Auth.createSession(user._id)
   // )
   // .then(session => {
-  //   res.send(JSON.stringify(session.sessionId));
+  // res.send(JSON.stringify(res.user.sessionId));
   // })
-})
 
-app.post('/signUp', passport.authenticate('local-signup'), function(req, res) {
- console.log("IN MAIN NOW")
- var username = req.body.username;
- var password = req.body.password;
- console.log("req",req.sessionID)
- console.log("res",res.body)
+// }
+
+
+// app.post('/signUp', passport.authenticate('local-signup'), function(req, res) {
  // db.collection('users').find({username: username})
  // .then((user) => {
  //   if(user[0]){
@@ -60,8 +73,8 @@ app.post('/signUp', passport.authenticate('local-signup'), function(req, res) {
  //   return db.collection('sessions').insert({id: obj._id, sessionId: sessionId});
  // })
  // .then(function(obj){
-   res.send(JSON.stringify(obj.sessionId));
- })
+ //   res.send(JSON.stringify(obj.sessionId));
+ // })
 
 
 // Logs in current user as long as username is in users collection and provided a valid password
