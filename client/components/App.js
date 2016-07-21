@@ -9,7 +9,8 @@ export default class App extends React.Component {
       tempCollection: [],
       artCollection: [],
       showInfoModal: false,
-      currentArt: null
+      currentArt: null,
+      gpsCollection: []
     }
   }
 
@@ -26,7 +27,6 @@ export default class App extends React.Component {
   }
 
   _closeInfoModal() {
-    console.log('closed')
     this.setState({showInfoModal: false});
     this.setState({currentArt: null})
   }
@@ -35,7 +35,10 @@ export default class App extends React.Component {
     this._fetchArt()
     .then(() => {
       this._getLikes()
-    });
+    })
+    .then(() => {
+      this._addressToGPS()
+    })
   }
   
   _fetchArt() {
@@ -45,7 +48,31 @@ export default class App extends React.Component {
       })
   }
 
-  // make new geocoder function, call it in .then inside fetchArt
+  // loop through temp collection
+  // for each artwork, address = modified address of that artwork
+  // fetch coords using that address
+  // push result
+  _addressToGPS() {
+    var results = []
+    this.state.tempCollection.forEach((artwork) => {
+        const address = artwork['Art Location Street Address'].replace(/ /g, '+').replace(/;/g, '+')
+        if (address.length > 1){
+          //do fetch request
+          art.getCoords(address)
+            .then((res) => {
+              //console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', res.results[0].geometry.location)
+              var coords = {
+                lat: res.results[0].geometry.location.lat,
+                lng: res.results[0].geometry.location.lng
+              }
+              console.log(coords)
+              results.push(Object.assign(artwork, coords))
+            })
+          // when whole collection is complete, set state of gpscollection to results
+        }
+    })
+    this.state.gpsCollection.push(results)
+  }
 
   _getLikes() {
     var results = [];
@@ -58,6 +85,7 @@ export default class App extends React.Component {
         }
       })
     })
+    return;
   }
 
   _updateCurrentArt(likes) {
@@ -76,7 +104,7 @@ export default class App extends React.Component {
           showInfoModal: this.state.showInfoModal,
           openInfoModal: this._openInfoModal.bind(this),
           closeInfoModal: this._closeInfoModal.bind(this),
-
+          gpsCollection: this.state.gpscollection
         })}
       </div>
     )

@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
-import NavBar from './NavBar'
-import InfoModal from './InfoModal'
-import * as helpers from '../helpers'
+import NavBar from './NavBar';
+import InfoModal from './InfoModal';
+import * as helpers from '../helpers';
+import {Link} from 'react-router';
 
 export default class LocationsContainer extends React.Component{
   constructor(props) {
@@ -67,6 +68,7 @@ export default class LocationsContainer extends React.Component{
           loadingMessage={'Be happy'}
           params={{v: '3.exp', key: 'AIzaSyAzhwRABci2uwXxlC07KKYNmOzMde2Z1bY'}}
           onMapCreated={this.onMapCreated}>
+
           {coords.map((coord, idx) =>
             <Marker
               key={idx}
