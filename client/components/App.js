@@ -23,7 +23,7 @@ export default class App extends React.Component {
       showInfoModal: true,
       currentArt: art
     });
-    console.log('in app.js', this.state.currentArt)
+    console.log(this.state.gpsCollection)
   }
 
   _closeInfoModal() {
@@ -62,8 +62,8 @@ export default class App extends React.Component {
             .then((res) => {
               //console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', res.results[0].geometry.location)
               var coords = {
-                lat: res.results[0].geometry.location.lat,
-                lng: res.results[0].geometry.location.lng
+                coords: {lat: res.results[0].geometry.location.lat,
+                         lng: res.results[0].geometry.location.lng}
               }
               console.log(coords)
               results.push(Object.assign(artwork, coords))
