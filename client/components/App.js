@@ -26,6 +26,7 @@ export default class App extends React.Component {
   }
 
   _closeInfoModal() {
+    console.log('closed')
     this.setState({showInfoModal: false});
     this.setState({currentArt: null})
   }

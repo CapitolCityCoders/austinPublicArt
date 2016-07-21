@@ -5,6 +5,8 @@ import NavBar from './NavBar'
 import Slider from 'react-slick'
 import * as auth from '../models/auth'
 import * as art from '../models/art'
+import {Link} from 'react-router';
+import App from './App'
 
 export default class InfoModal extends React.Component {
   constructor() {
@@ -13,7 +15,6 @@ export default class InfoModal extends React.Component {
       userFavs: [],
       userId: null,
       address: '',
-      mapStatus: 'show'
     }
   }
 
@@ -57,7 +58,12 @@ export default class InfoModal extends React.Component {
         <ModalDialog onClose={this.props.onClose} className="info">
 
             <h2>{this.props.currentArt['Art Title']}</h2>
-            <p>By: {this.props.currentArt['Artist Full Name']}</p>
+            <p>
+              Artist: 
+                <Link to={`/${this.props.currentArt['Artist Full Name']}`}>
+                  {'' + this.props.currentArt['Artist Full Name']}
+                </Link>
+            </p>
             <p>Location: {this.props.currentArt['Art Location Name']}</p>
             {this.props.currentArt.likeCount ? 
               <p> Likes: {this.props.currentArt.likeCount.length}</p> : 

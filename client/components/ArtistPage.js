@@ -5,6 +5,11 @@ import NavBar from './NavBar'
 import * as helpers from '../helpers'
 
 export default class ArtistPage extends React.Component {
+
+  componentWillMount() {
+    this.props.closeInfoModal()
+  }
+
   render() {
     // filter gallery collection by selected artist name
     let arts = this.props.gallery.filter(art => 
