@@ -68,7 +68,7 @@ export default class LocationsContainer extends React.Component{
             <Marker
               key={idx}
               lat={artwork.coords.lat}
-              lng={artwork.coords.lon}
+              lng={artwork.coords.lng}
               draggable={false}
               onClick={this.props.openInfoModal.bind(null, artwork)}
               onDragEnd={this.onDragEnd} />
