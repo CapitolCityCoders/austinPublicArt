@@ -37,6 +37,33 @@ router.post('/signUp',
   // })
 })
 
+app.post('/signUp', passport.authenticate('local-signup'), function(req, res) {
+ console.log("IN MAIN NOW")
+ var username = req.body.username;
+ var password = req.body.password;
+ console.log("req",req.sessionID)
+ console.log("res",res.body)
+ // db.collection('users').find({username: username})
+ // .then((user) => {
+ //   if(user[0]){
+ //     res.statusMessage = "Username taken."
+ //     res.status(400).end();
+ //   } else {
+ //     return Utils.hashPassword(password)
+ //   }
+ // })
+ // .then(function(hash){
+ //   return db.collection('users').insert({username: username, password: hash});
+ // })
+ // .then(function(obj){
+ //   var sessionId = Utils.createSessionId();
+ //   return db.collection('sessions').insert({id: obj._id, sessionId: sessionId});
+ // })
+ // .then(function(obj){
+   res.send(JSON.stringify(obj.sessionId));
+ })
+
+
 // Logs in current user as long as username is in users collection and provided a valid password
 router.post('/login', function(req, res) {
   const username = req.body.username;

@@ -57,46 +57,6 @@ module.exports = function (passport) {
 
 
 
-  // passport.use('local-signup', new LocalStrategy(
-  //   function(username,password,callback){
-  //     process.nextTick(function(){
-  //       console.log('Local', username, password, callback)
-  //       db.collection('users').find({username: username})
-  //           .then((user) => {
-  //           if(user.length > 0){
-  //               if(user[0].username){
-  //                   return callback(null, false);
-  //               }
-  //         }
-  //         else {
-  //           return Utils.hashPassword(password).then(function(hash) {
-  //             return db.collection('users').insert({username: username, password: hash})
-  //           })
-  //           .then(function(obj) {
-  //             var sessionId = Utils.createSessionId();
-  //             return db.collection('sessions').insert({id: obj._id, sessionId: sessionId});
-  //           })
-  //           .then(function(obj) {
-  //             return callback(null, {userID:obj})
-  //           })
-
-
-// hash password
-  // add user and passowrd to users table
-// then create a session
-// then return done(null, {userID:obj})
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   passport.user('local-signup', new LocalStrategy(
 //     function(username, password, done) {
