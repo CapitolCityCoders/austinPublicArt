@@ -23,7 +23,6 @@ export default class App extends React.Component {
       showInfoModal: true,
       currentArt: art
     });
-    console.log(this.state.gpsCollection)
   }
 
   _closeInfoModal() {
@@ -60,18 +59,16 @@ export default class App extends React.Component {
           //do fetch request
           art.getCoords(address)
             .then((res) => {
-              //console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', res.results[0].geometry.location)
               var coords = {
                 coords: {lat: res.results[0].geometry.location.lat,
                          lng: res.results[0].geometry.location.lng}
               }
-              console.log(coords)
               results.push(Object.assign(artwork, coords))
             })
           // when whole collection is complete, set state of gpscollection to results
         }
     })
-    this.state.gpsCollection.push(results)
+    this.setState({gpsCollection: results})
   }
 
   _getLikes() {
@@ -104,7 +101,7 @@ export default class App extends React.Component {
           showInfoModal: this.state.showInfoModal,
           openInfoModal: this._openInfoModal.bind(this),
           closeInfoModal: this._closeInfoModal.bind(this),
-          gpsCollection: this.state.gpscollection
+          gpsCollection: this.state.gpsCollection
         })}
       </div>
     )

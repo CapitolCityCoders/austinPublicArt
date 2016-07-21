@@ -37,16 +37,11 @@ export default class LocationsContainer extends React.Component{
     //
     // coords for testing:
     //
-    const coords = [{lat: 30.295874, lon: -97.715524},
-                    {lat: 30.296874, lon: -97.715524},
-                    {lat: 30.294874, lon: -97.715524},
-                    {lat: 30.297874, lon: -97.715524},
-                    {lat: 30.298874, lon: -97.715524},
-                    {lat: 30.285874, lon: -97.715524},
-                    {lat: 30.215874, lon: -97.715524},
-                    {lat: 30.290874, lon: -97.715524},
-                    {lat: 30.291874, lon: -97.715524},
-                    {lat: 30.299874, lon: -97.715524}];
+    const coords = this.props.gpsCollection.slice(0,10)
+
+    console.log(this.props.gpsCollection)
+    console.log(this.props.gpsCollection[0].coords.lat)
+
 
     return (
       <div>
@@ -69,13 +64,13 @@ export default class LocationsContainer extends React.Component{
           params={{v: '3.exp', key: 'AIzaSyAzhwRABci2uwXxlC07KKYNmOzMde2Z1bY'}}
           onMapCreated={this.onMapCreated}>
 
-          {coords.map((coord, idx) =>
+          {this.props.gpsCollection.map((artwork, idx) =>
             <Marker
               key={idx}
-              lat={coord.lat}
-              lng={coord.lon}
+              lat={artwork.coords.lat}
+              lng={artwork.coords.lon}
               draggable={false}
-              onClick={this.props.openInfoModal.bind(null, this.props.gallery[idx])}
+              onClick={this.props.openInfoModal.bind(null, artwork)}
               onDragEnd={this.onDragEnd} />
           )}
         </Gmaps>
