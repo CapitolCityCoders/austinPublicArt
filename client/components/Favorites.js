@@ -43,7 +43,7 @@ export default class Favorites extends React.Component {
           null}
 
     		<h3>Your Favs!</h3>
-    		<div className="artGallery">
+    		<div className="favGallery">
           {this.state.favs.length > 0 ?
             this.state.favs.map(art =>
             <div className="soloWork" key={art._id}>
