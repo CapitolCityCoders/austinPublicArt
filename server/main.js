@@ -9,15 +9,7 @@ const routes = require('./routes');
 const app = express();
 const port = process.env.PORT || 4040;
 
-////////////////// Passport //////////////////
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-require('./controllers/passport')(passport);
 app.use(bodyParser.json());
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // Load Routes
 routes(app);
@@ -31,9 +23,6 @@ app.get('/app-bundle.js',
    })
 );
 
-
-
 app.listen(port, () => {
-  console.log("Server is listening on port " + port) 
+  console.log("Server is listening on port " + port)
 })
-

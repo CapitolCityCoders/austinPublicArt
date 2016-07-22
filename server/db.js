@@ -7,5 +7,3 @@ var db = pmongo(uri, {
 });
 
 module.exports = db
-var passport = require('passport') 
-require('./controllers/passport')(passport);
