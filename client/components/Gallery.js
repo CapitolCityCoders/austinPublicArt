@@ -27,10 +27,6 @@ export default class ArtWindow extends React.Component {
 
   render() {
     const filteredArt = this.props.gallery.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
-    const divStyle = {
-      color: 'white',
-      backgroundImage: '../images/grass_texture',
-    };
     return (
       <div>
     {/*If the gallery state is not populated, show the loading div. Else diaplay gallery*/}
@@ -40,7 +36,7 @@ export default class ArtWindow extends React.Component {
             <img src="http://images.clipartpanda.com/artist-paint-brush-vector-artist__s_paint_brush_by_rildraw-d4a5ogt.png" height="150px" width="150px"/>
           </div>
           <p>Drawing pictures...</p>
-          <ReactSpinner config={{scale: 4, color: 'black'}}/>
+          <ReactSpinner config={{scale: 4, color: 'red'}}/>
         </div>
         :
         <div>
@@ -55,7 +51,6 @@ export default class ArtWindow extends React.Component {
 
           <NavBar />
           <div className="artGallery">
-            <NavBar />
             {/* Art info modal */}
             {this.props.showInfoModal ?
               <InfoModal 
@@ -89,9 +84,10 @@ export default class ArtWindow extends React.Component {
               </li>
             )}
           </ul>
-        </div>}
+        </div>
+      </div>}
       </div>
-    )
+  )
   }
 }
 

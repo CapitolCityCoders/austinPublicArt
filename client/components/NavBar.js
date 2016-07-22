@@ -71,9 +71,12 @@ export default class NavBar extends React.Component {
     this.setState({username: null})
   }
 
+
+
+
   drawUsername() {
-    if(this.state.username) return ( <span className="usernameSpan">Welcome, {this.state.username}</span> );
-      else return ( <span className="usernameSpan">Welcome Guest</span> )
+    if(this.state.username) return (<div className='animated bounceInRight'><span className="usernameSpan" >Welcome, {this.state.username}</span></div> );
+      else return (<span className="usernameSpan">Welcome Guest</span>)
   }
 
   //Render the navbar
