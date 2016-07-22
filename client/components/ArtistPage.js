@@ -32,21 +32,25 @@ export default class ArtistPage extends React.Component {
           /> :
           null}
 
-        {arts.map(art => 
-          <div key={art._id} className="soloWork">
-            <h3 className="soloArtTitle">{art['Art Title']}</h3>
-            <a 
-              href="javascript:void(0)" 
-              onClick={this.props.openInfoModal.bind(null, art)} 
-              className="artImage"
-            >
-              <img className='artImage' src={helpers.parseImageUrl(art.Images)[0]} />
-            </a>
-            <div className="soloArtInfo">
-              <p>{art['Art Location Name']}</p>
+        <ul className="rig">
+          {arts.map(art => 
+            <li key={art._id} className="animated flipInY">
+            <div className="soloWork">
+              <h3 className="soloArtTitle">{art['Art Title']}</h3>
+              <a 
+                href="javascript:void(0)" 
+                onClick={this.props.openInfoModal.bind(null, art)} 
+                className="artImage"
+              >
+                <img className='artImage' src={helpers.parseImageUrl(art.Images)[0]} />
+              </a>
+              <div className="soloArtInfo">
+                <p>{art['Art Location Name']}</p>
+              </div>
             </div>
-          </div>
-        )}
+            </li>
+          )}
+        </ul>
       </div>
     );
   }
