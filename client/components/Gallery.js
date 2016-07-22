@@ -54,6 +54,17 @@ export default class ArtWindow extends React.Component {
         <br></br>
 
           <NavBar />
+          <div className="artGallery">
+            <NavBar />
+            {/* Art info modal */}
+            {this.props.showInfoModal ?
+              <InfoModal 
+                onClose={this.props.closeInfoModal} 
+                updateCurrent={this.props.updateCurrentArt} 
+                currentArt={this.props.currentArt} 
+                parseImageUrl={parseImageUrl}
+              /> :
+              null}
 
           {/* Art info modal */}
           {this.props.showInfoModal ?

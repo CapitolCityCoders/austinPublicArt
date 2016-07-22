@@ -28,6 +28,7 @@ export default class LoginModal extends React.Component {
     }, 1500);
   }
 
+
   render() {
     return <ModalContainer onClose={this.props.onClose}>
       {this.state.isLoading ?

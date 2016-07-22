@@ -11,6 +11,7 @@ export default class App extends React.Component {
       showInfoModal: false,
       currentArt: null,
       gpsCollection: []
+
     }
   }
 
@@ -91,7 +92,7 @@ export default class App extends React.Component {
 
 
   render(){
-    // pass down props from App component to each of its routed children
+    //pass down props from App component to each of its routed children
     return (
       <div>
         {this.props.children && React.cloneElement(this.props.children, {
