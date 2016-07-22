@@ -28,7 +28,7 @@ export default class ArtWindow extends React.Component {
   render() {
     const filteredArt = this.props.gallery.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
     const divStyle = {
-      // color: 'white',
+      color: 'white',
       backgroundImage: '../images/grass_texture',
     };
     return (
@@ -40,7 +40,7 @@ export default class ArtWindow extends React.Component {
             <img src="http://images.clipartpanda.com/artist-paint-brush-vector-artist__s_paint_brush_by_rildraw-d4a5ogt.png" height="150px" width="150px"/>
           </div>
           <p>Drawing pictures...</p>
-          <ReactSpinner config={{scale: 5, color: 'red'}}/>
+          <ReactSpinner config={{scale: 4, color: 'black'}}/>
         </div>
         :
         <div>

@@ -31,9 +31,7 @@
   background: black;
 }
 .loadingDiv {
-  /*background-color: lightgrey;*/
   width: 300px;
-  /*border: 10px solid black;*/
   padding: 25px;
   margin: auto;
 }
@@ -41,12 +39,6 @@
   padding-top: 50px;
   text-align: -webkit-center;
   height:100vh;
-}
-
-.react-spinner{
-  height: 200px;
-  width: 200px;
-  color: blue;
 }
 
 .closeButton--jss-0-1 {
@@ -116,8 +108,8 @@ iframe{
   box-shadow: 3px 3px 10px
 }
 body {
-		background: #E9E9E9;
-    font-family: 'bushcraft', 'Open Sans', sans-serif;
+		/*background: #E9E9E9;*/
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     position: relative;
 }
