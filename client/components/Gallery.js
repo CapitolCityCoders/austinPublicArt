@@ -27,8 +27,12 @@ export default class ArtWindow extends React.Component {
 
   render() {
     const filteredArt = this.props.gallery.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    const divStyle = {
+      // color: 'white',
+      backgroundImage: '../images/grass_texture',
+    };
     return (
-      <div>
+      <div className="wallpaper">
     {/*If the gallery state is not populated, show the loading div. Else diaplay gallery*/}
       {!this.props.gallery[0] ?
         <div className="loadingDiv">

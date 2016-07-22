@@ -1,3 +1,8 @@
+.wallpaper {
+  background-image: url('../images/grass_texture.jpg');
+  background-attachment: fixed;
+  background-size: contain;
+}
 .slideshowPicture {
   height:400px;
   width:600px;
@@ -21,6 +26,7 @@
 .loadingDiv p {
   padding-top: 50px;
   text-align: -webkit-center;
+  height:100vh;
 }
 .closeButton--jss-0-1 {
   display: none !important;
@@ -34,7 +40,7 @@
   border-radius: 100%;
   display: block;
   margin: 0 auto;
-  box-shadow: 8px 8px 5px grey;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.5);
 }
 .artGallery {
 -moz-column-count: 3;
@@ -70,6 +76,7 @@
 .soloWork {
   padding:10px;
   margin: 10px;
+  height:100vh;
   /*background: #eef;*/
   text-align: -webkit-center;
 }

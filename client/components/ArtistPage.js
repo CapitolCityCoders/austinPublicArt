@@ -17,7 +17,7 @@ export default class ArtistPage extends React.Component {
     )
 
     return (
-      <div>
+      <div className="wallpaper">
         <NavBar />
         <br/>
         <br/>
