@@ -12,7 +12,6 @@ export default class LocationsContainer extends React.Component{
   }
 
   onMapCreated(map) {
-    console.log(this.props.gpsCollection)
     map.setOptions({
       disableDefaultUI: true
     });
@@ -23,6 +22,8 @@ export default class LocationsContainer extends React.Component{
   }
 
   render() {  
+    console.log('gps collection', this.props.gpsCollection)
+    console.log('location photos', this.props.locationPhotos)
 
     return (
       <div>

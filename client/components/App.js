@@ -15,7 +15,7 @@ export default class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this._update();
   }
 
@@ -38,10 +38,10 @@ export default class App extends React.Component {
       this._getLikes()
     })
     .then(() => {
-      this._addressToGPS()
+      return this._addressToGPS()
     })
-    .then(() => {
-      this._getLocationPhotos()
+    .then((result) => {
+        this._getLocationPhotos(result)
     })
   }
   
@@ -59,8 +59,12 @@ export default class App extends React.Component {
         if (address.length > 1){
           art.getCoords(address)
             .then((res) => {
+              var place_id = null
+              if (res.results[0].place_id) {
+                place_id = res.results[0].place_id
+              }
               var coords = {
-                coords: {place_id: res.results[0].place_id,
+                coords: {place_id: place_id,
                          lat: res.results[0].geometry.location.lat,
                          lng: res.results[0].geometry.location.lng}
               }
@@ -68,14 +72,20 @@ export default class App extends React.Component {
             })
         }
     })
-    this.setState({gpsCollection: results})
+    this.setState(function(previousState, currentProps) {
+      return {gpsCollection: results};
+    }, function(){
+      console.log('this happened!', this.state.gpsCollection)
+    })
+    console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',results)
+    return results;
   }
 
-  _getLocationPhotos(){
+  _getLocationPhotos(collection){
     var results = [];
-    console.log('in _getLocationPhotos')
-    this.state.gpsCollection.forEach((artwork) => {
-      console.log('in map')
+    console.log('in _getLocationPhotos. collection: ', collection)
+    collection.forEach((artwork) => {
+      console.log('in 4 Each')
       var place_id = artwork.coords.place_id
       var width = 600
       art.getPhotos(place_id, width)
@@ -84,7 +94,7 @@ export default class App extends React.Component {
             photos: res.result.photos
           }
           console.log(photos)
-          results.push(Object.assign(artwork, coords))
+          results.push(Object.assign(artwork, photos))
         })
     })
     this.setState({locationPhotos: results})
@@ -120,7 +130,8 @@ export default class App extends React.Component {
           showInfoModal: this.state.showInfoModal,
           openInfoModal: this._openInfoModal.bind(this),
           closeInfoModal: this._closeInfoModal.bind(this),
-          gpsCollection: this.state.gpsCollection
+          gpsCollection: this.state.gpsCollection,
+          locationPhotos: this.state.locationPhotos
         })}
       </div>
     )
