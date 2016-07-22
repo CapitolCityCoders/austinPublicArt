@@ -23,6 +23,7 @@ export default class App extends React.Component {
       showInfoModal: true,
       currentArt: art
     });
+    //console.log(this.state.gpsCollection)
   }
 
   _closeInfoModal() {
@@ -47,25 +48,20 @@ export default class App extends React.Component {
       })
   }
 
-  // loop through temp collection
-  // for each artwork, address = modified address of that artwork
-  // fetch coords using that address
-  // push result
   _addressToGPS() {
     var results = []
     this.state.tempCollection.forEach((artwork) => {
         const address = artwork['Art Location Street Address'].replace(/ /g, '+').replace(/;/g, '+')
         if (address.length > 1){
-          //do fetch request
           art.getCoords(address)
             .then((res) => {
               var coords = {
-                coords: {lat: res.results[0].geometry.location.lat,
+                coords: {place_id: res.results[0].place_id,
+                         lat: res.results[0].geometry.location.lat,
                          lng: res.results[0].geometry.location.lng}
               }
               results.push(Object.assign(artwork, coords))
             })
-          // when whole collection is complete, set state of gpscollection to results
         }
     })
     this.setState({gpsCollection: results})
