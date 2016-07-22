@@ -101,7 +101,7 @@ export default class InfoModal extends React.Component {
                 width="600"
                 height="450"
                 frameBorder="0"
-                src={"https://www.google.com/maps/embed/v1/place?key=AIzaSyASx8uyd5unDD_nox3grraxCR0hi2L9ZYg&q="+this.state.address+",Austin+TX"} allowFullScreen>
+                src={"https://www.google.com/maps/embed/v1/place?key=AIzaSyASx8uyd5unDD_nox3grraxCR0hi2L9ZYg&q="+this.state.address+",Austin+TX&zoom=15"} allowFullScreen>
               </iframe>
             </div>
           {/* Check if logged in (document.cookie?), if true display Like and Favorite button */}

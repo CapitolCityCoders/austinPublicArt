@@ -10,7 +10,8 @@ export default class App extends React.Component {
       artCollection: [],
       showInfoModal: false,
       currentArt: null,
-      gpsCollection: []
+      gpsCollection: [],
+      locationPhotos: []
     }
   }
 
@@ -39,6 +40,9 @@ export default class App extends React.Component {
     .then(() => {
       this._addressToGPS()
     })
+    .then(() => {
+      this._getLocationPhotos()
+    })
   }
   
   _fetchArt() {
@@ -65,6 +69,25 @@ export default class App extends React.Component {
         }
     })
     this.setState({gpsCollection: results})
+  }
+
+  _getLocationPhotos(){
+    var results = [];
+    console.log('in _getLocationPhotos')
+    this.state.gpsCollection.forEach((artwork) => {
+      console.log('in map')
+      var place_id = artwork.coords.place_id
+      var width = 600
+      art.getPhotos(place_id, width)
+        .then((res) => {
+          var photos = {
+            photos: res.result.photos
+          }
+          console.log(photos)
+          results.push(Object.assign(artwork, coords))
+        })
+    })
+    this.setState({locationPhotos: results})
   }
 
   _getLikes() {
