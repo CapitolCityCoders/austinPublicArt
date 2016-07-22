@@ -23,26 +23,6 @@ export default class LocationsContainer extends React.Component{
 
   render() {  
 
-    //
-    //  Map displays list of harcoded coordinates
-    //  and each coordinate matches up by idx with
-    //  what is stored in the temp art cache.
-    //
-    //  To Do:
-    //  - add gps coordinates to temp cache
-    //    * by making api calls to gapi when the 
-    //      temp cache is created
-    //  - modify map call below to map over 
-    //    this.props.gallery instead of coords 
-    //
-    // coords for testing:
-    //
-    const coords = this.props.gpsCollection.slice(0,10)
-
-    console.log(this.props.gpsCollection)
-    console.log(this.props.gpsCollection[0].coords.lat)
-
-
     return (
       <div>
         <NavBar />
