@@ -79,7 +79,7 @@ export default class NavBar extends React.Component {
   //Render the navbar
   render() {
     return(
-      <div className="w3-top">
+      <div className="w3-top nav">
         <ul className="w3-navbar w3-black w3-card-2 w3-left-align">
           <li className="w3-hide-medium w3-hide-large w3-opennav w3-right">
             <a className="w3-padding-large" href="javascript:void(0)" title="Toggle Navigation Menu"><i className="fa fa-bars"></i></a>

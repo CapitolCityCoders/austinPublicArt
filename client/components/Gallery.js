@@ -52,21 +52,22 @@ export default class ArtWindow extends React.Component {
         <br></br>
         <br></br>
         <br></br>
-          <div className="artGallery">
-            <NavBar />
 
-            {/* Art info modal */}
-            {this.props.showInfoModal ?
-              <InfoModal 
-                onClose={this.props.closeInfoModal} 
-                updateCurrent={this.props.updateCurrentArt} 
-                currentArt={this.props.currentArt} 
-                parseImageUrl={parseImageUrl}
-              /> :
-              null}
+          <NavBar />
 
+          {/* Art info modal */}
+          {this.props.showInfoModal ?
+            <InfoModal 
+              onClose={this.props.closeInfoModal} 
+              updateCurrent={this.props.updateCurrentArt} 
+              currentArt={this.props.currentArt} 
+              parseImageUrl={parseImageUrl}
+            /> :
+            null}
+
+          <ul className="rig">
             {filteredArt.map(art =>
-              <div className="artwork" key={art._id}>
+              <li className="artwork" key={art._id}>
                 <a 
                   href="javascript:void(0)" 
                   onClick={this.props.openInfoModal.bind(null, art)} 
@@ -74,9 +75,9 @@ export default class ArtWindow extends React.Component {
                 > 
                   <img className="artImage" src={parseImageUrl(art.Images)[0]} /> 
                 </a>
-              </div>
+              </li>
             )}
-          </div>
+          </ul>
         </div>}
       </div>
     )
