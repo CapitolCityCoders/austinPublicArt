@@ -40,7 +40,7 @@ export default class ArtWindow extends React.Component {
             <img src="http://images.clipartpanda.com/artist-paint-brush-vector-artist__s_paint_brush_by_rildraw-d4a5ogt.png" height="150px" width="150px"/>
           </div>
           <p>Drawing pictures...</p>
-          <ReactSpinner config={{color: "red"}}/>
+          <ReactSpinner config={{scale: 5, color: 'red'}}/>
         </div>
         :
         <div>

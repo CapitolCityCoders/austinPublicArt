@@ -16,6 +16,7 @@
   background-size: contain;
 }
 */
+
 .slideshowPicture {
   height:400px;
   width:600px;
@@ -41,6 +42,13 @@
   text-align: -webkit-center;
   height:100vh;
 }
+
+.react-spinner{
+  height: 200px;
+  width: 200px;
+  color: blue;
+}
+
 .closeButton--jss-0-1 {
   display: none !important;
 }
@@ -58,6 +66,7 @@
 .artGallery {
 -moz-column-count: 3;
 -webkit-column-count: 3;
+/*background-image: url('../images/grey.jpg')*/
 }
 .search-input {
   margin: 0 50px 10px 25px;
@@ -114,8 +123,9 @@ body {
 }
 
 html,body {
-      width: 100%;
-     overflow-x: hidden;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'bushcraft';
   }
 
 .post-masonry img {
@@ -125,6 +135,7 @@ html,body {
 
 /* Typography
 ------------------------------------- */
+
 h1,h2,h3,h4,h5 {
   font-weight: bold;
 }
