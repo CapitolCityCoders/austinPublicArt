@@ -55,15 +55,18 @@ export default class App extends React.Component {
     var results = []
     this.state.tempCollection.forEach((artwork) => {
         const address = artwork['Art Location Street Address'].replace(/ /g, '+').replace(/;/g, '+')
+        
+        // excludes bad api data
         if (address.length > 1){
-          //do fetch request
           art.getCoords(address)
             .then((res) => {
-              var coords = {
-                coords: {lat: res.results[0].geometry.location.lat,
-                         lng: res.results[0].geometry.location.lng}
+              if (res.results[0] !== undefined) {
+                var coords = {
+                  coords: {lat: res.results[0].geometry.location.lat,
+                           lng: res.results[0].geometry.location.lng}
+                }
+                results.push(Object.assign(artwork, coords))
               }
-              results.push(Object.assign(artwork, coords))
             })
           // when whole collection is complete, set state of gpscollection to results
         }

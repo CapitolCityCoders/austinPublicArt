@@ -2,3 +2,4 @@ node_modules
 db
 server/db
 .DS_Store
+secret.js
