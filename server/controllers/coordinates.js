@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('isomorphic-fetch');
-var secret = require('../../secret');
+var secret = process.env.GMAPS_SECRET
 
 module.exports = router;
 
