@@ -24,9 +24,11 @@ export function getLikes(artId) {
 }
 
 export function getCoords(address) {
-  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address},+Austin,+TX&key=${secret}`)
-    .then((response) => {
-      return response.json();
-    })
+  let obj = {
+    method: 'GET'
+  };
+  return fetch(`api/coordinates/:${address}`, obj)
+    .then(response => response.json() ) // response.json() returns a promise
+    .then( response => response )
     .catch(err => console.log(err))
 }

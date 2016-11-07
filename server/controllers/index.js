@@ -7,6 +7,7 @@ module.exports = router;
 router.use('/auth', require('./auth'));
 router.use('/favorite', require('./favorite'));
 router.use('/like', require('./like'));
+router.use('/coordinates', require('./coordinates'));
 
 // client asking for art data
 router.get('/art', function(req, res) {
