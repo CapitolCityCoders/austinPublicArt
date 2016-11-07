@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch';
-import secret from '../../secret'
 
 export function getArt() {
   let obj = {
